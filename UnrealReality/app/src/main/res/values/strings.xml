@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">UnrealReality</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="btnText">Shoot!</string>
+    <string name="StartCamera">Start</string>
+</resources>
