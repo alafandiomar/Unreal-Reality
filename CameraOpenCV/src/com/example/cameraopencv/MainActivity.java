@@ -49,7 +49,6 @@ public class MainActivity extends Activity implements CvCameraViewListener2{
 		
 		
 		mOpenCvCameraView = (JavaCameraView)findViewById(R.id.MainActivityCameraView);
-       
 		setDisplayOrientation(mOpenCvCameraView, 90);
 		mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
 		mOpenCvCameraView.setCvCameraViewListener(this);
