@@ -15,7 +15,11 @@ import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 import org.opencv.android.JavaCameraView;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.Point;
+import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
 
 public class CameraActivity extends Activity implements CvCameraViewListener2{
 
@@ -112,6 +116,20 @@ public class CameraActivity extends Activity implements CvCameraViewListener2{
 
 	@Override
 	public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
-		return inputFrame.rgba();
+		Mat image = inputFrame.rgba();
+		Core.circle(image,new Point(image.width()/2.0, image.height()/2.0),40, new Scalar(0, 0, 0), 2);
+		Core.line(image, new Point(image.width()/2.0 - 40, image.height()/2.0), new Point(image.width()/2.0 + 40, image.height()/2.0), new Scalar(0, 0, 0), 2);
+		Core.line(image, new Point(image.width()/2.0 , image.height()/2.0 - 40), new Point(image.width()/2.0, image.height()/2.0 + 40), new Scalar(0, 0, 0), 2);
+		return image;
+//		Mat image ;//= inputFrame.rgba();
+////		Core.circle(image,new Point(image.width()/2.0, image.height()/2.0),40, new Scalar(0, 0, 0), 2);
+////		Core.line(image, new Point(image.width()/2.0 - 40, image.height()/2.0), new Point(image.width()/2.0 + 40, image.height()/2.0), new Scalar(0, 0, 0), 2);
+////		Core.line(image, new Point(image.width()/2.0 , image.height()/2.0 - 40), new Point(image.width()/2.0, image.height()/2.0 + 40), new Scalar(0, 0, 0), 2);
+////		
+//	//	Rect rect = new Rect(new Point(inputFrame.rgba().width()/2.0 - 40, inputFrame.rgba().height()/2.0 - 40), new Point(inputFrame.rgba().width()/2.0 + 40, inputFrame.rgba().height()/2.0 + 40));
+//		image = new Mat(inputFrame.rgba().clone(), new Rect(0, 0, 20, 20));
+//		//image.submat(rect);
+//	//	Core.rectangle(image, new Point(5, 5), new Point(25, 25),new Scalar( 0, 255, 255 ),-1);
+//		return image;//image.clone();
 	}
 }
