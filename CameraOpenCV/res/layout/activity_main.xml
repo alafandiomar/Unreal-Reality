@@ -38,11 +38,7 @@
             android:padding="10dp"
             android:text="Sign Up" />
 
-<<<<<<< HEAD
-                <Button
-=======
         <Button
->>>>>>> origin/master
             android:id="@+id/btnStartCam"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

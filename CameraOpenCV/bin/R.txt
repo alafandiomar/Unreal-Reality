@@ -8,29 +8,20 @@ int drawable edittext_bottom_bg 0x7f020002
 int drawable edittext_default_bg 0x7f020003
 int drawable edittext_top_bg 0x7f020004
 int drawable email 0x7f020005
-<<<<<<< HEAD
 int drawable finalfb 0x7f020006
 int drawable ic_launcher 0x7f020007
 int drawable linearlayout_bg 0x7f020008
 int drawable password 0x7f020009
 int drawable signupbackground 0x7f02000a
 int drawable user 0x7f02000b
-int id MainActivityCameraView 0x7f08000b
-int id action_settings 0x7f08000c
-=======
-int drawable ic_launcher 0x7f020006
-int drawable linearlayout_bg 0x7f020007
-int drawable password 0x7f020008
-int drawable signupbackground 0x7f020009
-int drawable user 0x7f02000a
-int id MainActivityCameraView 0x7f08000d
-int id action_settings 0x7f08000e
->>>>>>> origin/master
+int id MainActivityCameraView 0x7f08000e
+int id action_settings 0x7f08000f
 int id any 0x7f080000
 int id back 0x7f080001
 int id btnSignIn 0x7f080005
 int id btnSignUp 0x7f080006
-int id btnSingIn 0x7f08000b
+int id btnSingInsc 0x7f08000b
+int id btnSingUpsc 0x7f08000d
 int id btnStartCam 0x7f080007
 int id buttonCameraStart 0x7f080003
 int id etEmail 0x7f08000c

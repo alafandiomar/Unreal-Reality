@@ -39,7 +39,7 @@
             android:textColorHint="#cccccc" />
 
         <Button
-            android:id="@+id/btnSingIn"
+            android:id="@+id/btnSingInsc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
