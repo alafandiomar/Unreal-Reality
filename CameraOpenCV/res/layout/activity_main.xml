@@ -38,6 +38,7 @@
             android:background="@drawable/button_default_bg"
             android:padding="10dp"
             android:text="Sign Up" />
+
                 <Button
             android:id="@+id/btnStartCam"
             android:layout_width="match_parent"

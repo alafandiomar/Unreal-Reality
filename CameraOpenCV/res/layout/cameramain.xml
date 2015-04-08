@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.cameraopencv.MainActivity" >
 
-<org.opencv.android.JavaCameraView
-    android:id="@+id/MainActivityCameraView"
-    android:layout_width="fill_parent"
-    android:layout_height="match_parent"
-    opencv:camera_id="any"
-    opencv:show_fps="true" />
+    <org.opencv.android.JavaCameraView
+        android:id="@+id/MainActivityCameraView"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        opencv:camera_id="any"
+        opencv:show_fps="true" />
 
 </LinearLayout>

@@ -16,10 +16,12 @@ import org.opencv.android.JavaCameraView;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
 
 public class CameraActivity extends Activity implements CvCameraViewListener2{
 
 	protected static final String TAG = null;
+	public Mat rgba;
 	//Fields
 	private BaseLoaderCallback mLoaderCallBack = new BaseLoaderCallback(this) {
 		@Override
@@ -101,17 +103,28 @@ public class CameraActivity extends Activity implements CvCameraViewListener2{
 	@Override
 	public void onCameraViewStarted(int width, int height) {
 		// TODO Auto-generated method stub
+		rgba = new Mat();
+		obj apple = new obj("apple");
+		apple.setHSVmin(new Scalar(0,0,0));
+		apple.setHSVmax(new Scalar(255,255,255));
+		
 		
 	}
 
 	@Override
 	public void onCameraViewStopped() {
 		// TODO Auto-generated method stub
-		
+		rgba.release();
 	}
 
 	@Override
 	public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
+		rgba = inputFrame.rgba();
+		
+		
+		
+		
+		
 		return inputFrame.rgba();
 	}
 }
