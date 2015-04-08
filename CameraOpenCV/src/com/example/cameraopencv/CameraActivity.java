@@ -1,8 +1,15 @@
 package com.example.cameraopencv;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
 
+import android.R.bool;
+import android.R.integer;
 import android.app.Activity;
+import android.opengl.Matrix;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -17,16 +24,21 @@ import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-
+import org.opencv.core.MatOfInt4;
+import org.opencv.core.MatOfPoint;
 import org.opencv.core.Point;
 import org.opencv.core.Rect;
-
+import org.opencv.utils.Converters;
 import org.opencv.core.Scalar;
-
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.imgproc.Moments;
 public class CameraActivity extends Activity implements CvCameraViewListener2{
 
 	protected static final String TAG = null;
-	public Mat rgba;
+	public Mat rgba,HSV,threshold;
+	obj apple;
+	private static double mMinContourArea = 0.1;
 	//Fields
 	private BaseLoaderCallback mLoaderCallBack = new BaseLoaderCallback(this) {
 		@Override
@@ -109,9 +121,10 @@ public class CameraActivity extends Activity implements CvCameraViewListener2{
 	public void onCameraViewStarted(int width, int height) {
 		// TODO Auto-generated method stub
 		rgba = new Mat();
-		obj apple = new obj("apple");
+		apple = new obj("apple");
 		apple.setHSVmin(new Scalar(0,0,0));
 		apple.setHSVmax(new Scalar(255,255,255));
+		
 		
 		
 	}
@@ -121,6 +134,51 @@ public class CameraActivity extends Activity implements CvCameraViewListener2{
 		// TODO Auto-generated method stub
 		rgba.release();
 	}
+	
+	public void morphOps() {
+		Mat erodeElement = Imgproc.getStructuringElement(Imgproc.MORPH_RECT,new Size(3,3));
+		Mat dilateElement = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(8,8));
+		
+		Imgproc.erode(threshold,threshold,erodeElement);
+		Imgproc.erode(threshold,threshold,erodeElement);
+
+		Imgproc.dilate(threshold,threshold,dilateElement);
+		Imgproc.dilate(threshold,threshold,dilateElement);
+	}
+	
+	
+	/*public void track(obj thefruit) {*/
+	/*	Vector<obj> objects;
+		Mat temp = new Mat();
+		
+		threshold.copyTo(temp);
+        List<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+		Mat hierarchy = null;
+
+		Imgproc.findContours(temp, contours, hierarchy, Imgproc.RETR_CCOMP,Imgproc.CHAIN_APPROX_SIMPLE);
+		
+		double refArea = 0;
+		boolean objectFound = false;
+        Iterator<MatOfPoint> each = contours.iterator();
+
+        // Find max contour area
+        double maxArea = 0;
+        while (each.hasNext()) {
+        	
+            MatOfPoint wrapper = each.next();
+            double area = Imgproc.contourArea(wrapper);
+            if (area > 400)
+            {
+                obj apple;
+                apple.setxPos(x);
+                
+            
+            }
+        }
+
+	}
+		
+	*/
 
 	@Override
 	public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
@@ -129,6 +187,12 @@ public class CameraActivity extends Activity implements CvCameraViewListener2{
 		Core.line(rgba, new Point(rgba.width()/2.0 - 40, rgba.height()/2.0), new Point(rgba.width()/2.0 + 40, rgba.height()/2.0), new Scalar(0, 0, 0), 2);
 		Core.line(rgba, new Point(rgba.width()/2.0 , rgba.height()/2.0 - 40), new Point(rgba.width()/2.0, rgba.height()/2.0 + 40), new Scalar(0, 0, 0), 2);
 		
+/*		Imgproc.cvtColor(inputFrame.rgba(),HSV , Imgproc.COLOR_BGR2HSV);
+		Core.inRange(HSV,apple.getHSVmin(),apple.getHSVmax(), threshold);
+		morphOps();
+		
+		
+		*/
 		
 		
 		
