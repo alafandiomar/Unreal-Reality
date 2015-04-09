@@ -43,11 +43,11 @@ NetworkComponent nc;
 		case R.id.btnSignIn:
 			//nc.sendhello();
 			//i = new Intent(this, ClientActivity.class);
-			i = new Intent(this, SignInActivity.class);
+			i = new Intent(this, Login.class);
 			break;
 		case R.id.btnSignUp:
 			//NetworkComponent.sendhello();
-			i = new Intent(this, SignUpActivity.class);
+			i = new Intent(this, Register.class);
 			break;
 		case R.id.btnStartCam:
 			//NetworkComponent.sendhello();
